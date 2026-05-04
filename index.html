@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KMDEPXL59"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KMDEPXL59');
+</script>
+
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 
@@ -87,7 +96,7 @@
 <!-- ═══════════════════════════════════════════════════════
      MAIN STYLESHEET
 ═══════════════════════════════════════════════════════ -->
-<link rel="stylesheet" href="assets/css/style.css"/>
+<link rel="stylesheet" href="/assets/css/style.css"/>
 
 </head>
 <body>
@@ -1116,8 +1125,8 @@ if (window.netlifyIdentity) {
        2. calculator.js  → listens for 'cmsReady', runs calcs
      Both are deferred by being at end of <body>.
 ═══════════════════════════════════════════════════════ -->
-<script src="assets/js/cms-bridge.js"></script>
-<script src="assets/js/calculator.js"></script>
+<script src="/assets/js/cms-bridge.js"></script>
+<script src="/assets/js/calculator.js"></script>
 
 </body>
 </html>
