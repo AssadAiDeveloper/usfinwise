@@ -11,7 +11,13 @@
 ═══════════════════════════════════════ */
 const $      = id => document.getElementById(id);
 const setTxt = (id, v) => { const e = $(id); if (e) e.textContent = v; };
-const getN   = id => parseFloat($(id)?.value) || 0;
+const getN   = id => {
+  const el = $(id);
+  if (!el || el.value === '' || el.value === null) return null;
+  const v = parseFloat(el.value);
+  return isNaN(v) ? null : v;
+};
+const getNZ  = id => getN(id) || 0; // returns 0 if empty (for optional fields)
 const fmt    = n  => n.toLocaleString('en-US', {style:'currency',currency:'USD',maximumFractionDigits:0});
 const fmtD   = n  => n.toLocaleString('en-US', {style:'currency',currency:'USD',maximumFractionDigits:2});
 const pct    = n  => (Math.round(n * 10) / 10) + '%';
@@ -164,16 +170,25 @@ window.syncFromSlider = syncFromSlider;
 window.syncFromDown  = syncFromDown;
 
 function calcMortgage() {
-  const price   = getN('m-price') || 450000;
-  const down    = getN('m-down');
+  const price   = getN('m-price');
+  const rate    = getN('m-rate');
+
+  // Show dashes if required fields are empty
+  if (!price || !rate) {
+    ['m-monthly','m-loan','m-total-int','m-total-cost','m-payoff-date',
+     'l-pi','l-tax','l-ins','l-pmi','m-prin-pct'].forEach(id => setTxt(id, '—'));
+    return;
+  }
+
+  const down    = getNZ('m-down');
   const loan    = Math.max(price - down, 0);
-  const annRate = getN('m-rate') / 100;
+  const annRate = rate / 100;
   const termYr  = parseInt($('m-term')?.value) || 30;
   const n       = termYr * 12;
   const mr      = annRate / 12;
-  const propTax = getN('m-tax');
-  const homeIns = getN('m-ins');
-  const hoa     = getN('m-hoa');
+  const propTax = getNZ('m-tax');
+  const homeIns = getNZ('m-ins');
+  const hoa     = getNZ('m-hoa');
   const downPct = price > 0 ? (down / price) * 100 : 0;
   const pmi     = downPct < 20 ? (loan * 0.008) / 12 : 0;
 
@@ -256,14 +271,21 @@ window.toggleAmort = toggleAmort;
    CALCULATOR 2: 401k
 ═══════════════════════════════════════ */
 function calcRet() {
-  const age        = getN('r-age')     || 32;
-  const retAge     = getN('r-ret-age') || 65;
-  const bal        = getN('r-bal');
+  const age        = getN('r-age');
+  const retAge     = getN('r-ret-age');
   const sal        = getN('r-sal');
-  const contribPct = getN('r-contrib') / 100;
-  const matchPct   = getN('r-match')   / 100;
-  const returnRate = getN('r-return')  / 100;
-  const inflRate   = getN('r-inf')     / 100;
+
+  if (!age || !retAge || !sal) {
+    ['r-nest','r-you','r-emp','r-growth','r-yrs','r-draw','r-savrate','r-dep-pct'].forEach(id => setTxt(id, '—'));
+    setTxt('r-infl-adj', '—');
+    return;
+  }
+
+  const bal        = getNZ('r-bal');
+  const contribPct = (getN('r-contrib') || 10) / 100;
+  const matchPct   = (getN('r-match')   || 0)  / 100;
+  const returnRate = (getN('r-return')  || 7)   / 100;
+  const inflRate   = (getN('r-inf')     || 2.5) / 100;
   const yrs        = Math.max(retAge - age, 0);
   const yourAnnual = sal * contribPct;
   const empAnnual  = sal * matchPct;
@@ -309,16 +331,23 @@ window.calcRet = calcRet;
    CALCULATOR 3: AUTO LOAN
 ═══════════════════════════════════════ */
 function calcAuto() {
-  const price   = getN('a-price') || 38000;
-  const down    = getN('a-down');
-  const trade   = getN('a-trade');
-  const apr     = getN('a-rate') / 100;
+  const price   = getN('a-price');
+  const apr     = getN('a-rate');
+
+  if (!price || !apr) {
+    ['a-monthly','a-loan','a-int','a-total','a-taxamt','a-prin-pct'].forEach(id => setTxt(id, '—'));
+    setTxt('a-term-lbl', '—');
+    return;
+  }
+
+  const down    = getNZ('a-down');
+  const trade   = getNZ('a-trade');
   const termMo  = parseInt($('a-term')?.value) || 60;
-  const taxRate = getN('a-tax') / 100;
-  const fees    = getN('a-fees');
+  const taxRate = (getN('a-tax') || 0) / 100;
+  const fees    = getNZ('a-fees');
   const taxAmt  = Math.max(price - trade, 0) * taxRate;
   const loanAmt = Math.max(price - down - trade + taxAmt + fees, 0);
-  const mr      = apr / 12;
+  const mr      = (apr / 100) / 12;
 
   let mo = 0;
   if (mr > 0) mo = loanAmt * (mr * Math.pow(1+mr,termMo)) / (Math.pow(1+mr,termMo) - 1);
@@ -357,10 +386,17 @@ function _sim(bal, mr, pmt) {
 }
 
 function calcCC() {
-  const bal   = getN('c-bal') || 9200;
-  const mr    = (getN('c-apr') / 100) / 12;
-  const minP  = getN('c-min') || 184;
-  const extra = getN('c-extra') || 0;
+  const bal   = getN('c-bal');
+  const apr   = getN('c-apr');
+  const minP  = getN('c-min');
+
+  if (!bal || !apr || !minP) {
+    ['c-min-mo','c-min-int','c-acc-mo','c-acc-int','c-saved','c-time-saved'].forEach(id => setTxt(id, '—'));
+    return;
+  }
+
+  const mr    = (apr / 100) / 12;
+  const extra = getNZ('c-extra');
 
   const rMin = _sim(bal, mr, minP);
   const rAcc = _sim(bal, mr, minP + extra);
@@ -392,12 +428,19 @@ window.calcCC = calcCC;
    CALCULATOR 5: COMPOUND INTEREST
 ═══════════════════════════════════════ */
 function calcCI() {
-  const P   = getN('ci-p')  || 15000;
-  const mc  = getN('ci-m')  || 600;
-  const r   = getN('ci-rate') / 100;
-  const yrs = getN('ci-yr') || 30;
+  const P   = getN('ci-p');
+  const r   = getN('ci-rate');
+  const yrs = getN('ci-yr');
+
+  if (P === null || !r || !yrs) {
+    ['ci-final','ci-dep','ci-int','ci-roi','ci-dbl','ci-dep-pct'].forEach(id => setTxt(id, '—'));
+    setTxt('ci-sub', '—');
+    return;
+  }
+
+  const mc  = getNZ('ci-m');
   const n   = parseInt($('ci-freq')?.value) || 12;
-  const rn  = r / n;
+  const rn  = (r / 100) / n;
   const nt  = n * yrs;
   const gf  = Math.pow(1 + rn, nt);
   const final  = P * gf + (rn > 0 ? mc * ((gf - 1) / rn) : mc * nt);
