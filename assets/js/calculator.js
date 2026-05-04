@@ -529,13 +529,21 @@ function cfErr(msg) { const el = document.getElementById('cf-error'); if (el) { 
 window.submitContact = submitContact;
 
 /* ═══════════════════════════════════════
-   INIT — ينتظر cmsReady من cms-bridge.js
+   INIT — يظهر شرطات حتى يضغط المستخدم الزر
 ═══════════════════════════════════════ */
+function showDashes() {
+  const dashIds = [
+    'm-monthly','m-loan','m-total-int','m-total-cost','m-payoff-date',
+    'l-pi','l-tax','l-ins','l-pmi','m-prin-pct',
+    'r-nest','r-infl-adj','r-you','r-emp','r-growth','r-yrs','r-draw','r-savrate','r-dep-pct',
+    'a-monthly','a-term-lbl','a-loan','a-int','a-total','a-taxamt','a-prin-pct',
+    'c-min-mo','c-min-int','c-acc-mo','c-acc-int','c-saved','c-time-saved',
+    'ci-final','ci-sub','ci-dep','ci-int','ci-roi','ci-dbl','ci-dep-pct',
+  ];
+  dashIds.forEach(id => setTxt(id, '—'));
+}
+
 document.addEventListener('cmsReady', function() {
-  calcMortgage();
-  calcRet();
-  calcAuto();
-  calcCC();
-  calcCI();
-  console.info('[USFinWise] ✅ All 5 calculators initialized.');
+  showDashes();
+  console.info('[USFinWise] ✅ Ready — waiting for user to press Calculate.');
 });
