@@ -45,6 +45,7 @@
 <meta name="twitter:image"       content="https://usfinwise.com/og-image.png"/>
 
 <link rel="canonical" href="https://usfinwise.com/"/>
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
 
 <!-- ═══════════════════════════════════════════════════════
      STATIC JSON-LD — All 7 schemas. Static = Googlebot
@@ -213,6 +214,10 @@ const CONFIG = {
       <button class="nav-tab" role="tab" aria-selected="false"
         data-tool="ci" onclick="openTool('ci',this)">
         <span class="t-ico" aria-hidden="true">✨</span> Compound
+      </button>
+      <button class="nav-tab" role="tab" aria-selected="false"
+        data-tool="about" onclick="openTool('about',this)">
+        <span class="t-ico" aria-hidden="true">ℹ️</span> About
       </button>
     </div>
 
@@ -505,7 +510,10 @@ const CONFIG = {
         <li><strong>FICO 680 → 760</strong> can cut your rate by 0.5–0.75%</li>
         <li><strong>Mortgage points</strong>: 1 point = 1% of loan, reduces rate ~0.25%; break-even ~3–4 yrs</li>
       </ul>
-      <div class="art-placeholder" role="note">📝 <strong>Article Placeholder</strong> — Add 400+ words: Fed rate Q3–Q4 2026 outlook, regional housing data, first-time buyer DPA programs.</div>
+      <h3>Fed Rate Outlook for Q3–Q4 2026</h3>
+      <p>The Federal Reserve held the federal funds rate steady in early 2026, signaling a cautious approach to monetary policy. Most economists project 1–2 rate cuts in the second half of 2026, which could push 30-year mortgage rates down to the 6.4–6.6% range by year-end. If you're considering buying, locking in a rate now with a float-down option may be a smart hedge against further volatility.</p>
+      <h3>Regional Housing Market Snapshot</h3>
+      <p>Home prices vary dramatically by region. Metros like Austin, Phoenix, and Boise have seen price corrections of 10–15% from 2022 peaks, while markets like Miami, New York, and Boston remain near record highs. Always research your local market before relying on national averages. Our mortgage calculator uses the numbers you enter — so put in your actual local price, not a national average.</p>
     </div>
   </article>
 </section>
@@ -599,7 +607,17 @@ const CONFIG = {
           <p>For 2026, the IRS raised the 401(k) employee contribution limit to <strong>$23,000</strong> ($30,500 for 50+). Combined with employer match and decades of tax-deferred compounding, a 401k is the most powerful wealth tool available to most Americans.</p>
           <h3>Never Leave Employer Match on the Table</h3>
           <p>At 4% match on a $90,000 salary, that's $3,600/year in free money. Compounded at 7% over 33 years, the match alone grows to over $480,000. Always contribute enough to capture the full match first.</p>
-          <div class="art-placeholder" role="note">📝 <strong>Article Placeholder</strong> — Add Traditional vs Roth 401k strategy, backdoor Roth IRA, and 2026 IRS limit context.</div>
+          <h3>Traditional vs. Roth 401k: Which Is Right for You in 2026?</h3>
+      <p>Traditional 401k contributions are pre-tax — you reduce your taxable income now and pay taxes on withdrawals in retirement. Roth 401k contributions are after-tax — you pay taxes now but withdrawals in retirement are completely tax-free. The right choice depends on whether you expect to be in a higher or lower tax bracket in retirement. For most workers under 40 in 2026, the Roth 401k is often the better long-term choice.</p>
+      <h3>The Backdoor Roth IRA Strategy</h3>
+      <p>High earners above the Roth IRA income limit ($161,000 single / $240,000 married in 2026) can still access Roth tax benefits through the "backdoor Roth" strategy: make a non-deductible Traditional IRA contribution and immediately convert it to a Roth IRA. This legal strategy is available to anyone regardless of income.</p>
+      <h3>2026 IRS Contribution Limits Summary</h3>
+      <ul>
+        <li><strong>401k employee limit:</strong> $23,000 ($30,500 if age 50+)</li>
+        <li><strong>IRA limit:</strong> $7,000 ($8,000 if age 50+)</li>
+        <li><strong>HSA — individual:</strong> $4,300 | <strong>family:</strong> $8,550</li>
+        <li><strong>Combined 401k employer + employee:</strong> $69,000</li>
+      </ul>
         </div>
       </article>
     </div>
@@ -674,7 +692,17 @@ const CONFIG = {
           <p>Average new vehicle prices crossed <strong>$48,500</strong> in early 2026 and average APR for new-car loans sits at <strong>7.10%</strong> for prime borrowers. Knowing your true cost — including trade-in, tax, and dealer fees — is your strongest negotiating tool.</p>
           <h3>Get Pre-Approved Before You Walk In</h3>
           <p>Pre-approval from your bank or credit union eliminates dealer financing markup (the "dealer reserve"). Always negotiate car price separately from financing.</p>
-          <div class="art-placeholder" role="note">📝 <strong>Article Placeholder</strong> — Add new vs used APR comparison, CPO benefits, and FICO tier rate breakdown.</div>
+          <h3>New vs. Used: Which Loan Is Better in 2026?</h3>
+      <p>New car loans typically carry lower APRs than used car loans — often 1–2% lower. However, new vehicles depreciate 15–25% in their first year. A certified pre-owned (CPO) vehicle that is 2–3 years old offers a middle ground: lower price, lower depreciation risk, and manufacturer-backed warranty. Use our auto loan calculator to compare the true cost of new vs. used before you decide.</p>
+      <h3>How Your Credit Score Affects Your Auto Rate</h3>
+      <ul>
+        <li><strong>Super Prime (781–850):</strong> ~4.5–5.5% APR</li>
+        <li><strong>Prime (661–780):</strong> ~6.5–7.5% APR</li>
+        <li><strong>Near Prime (601–660):</strong> ~9–11% APR</li>
+        <li><strong>Subprime (501–600):</strong> ~13–17% APR</li>
+        <li><strong>Deep Subprime (below 500):</strong> ~18–25%+ APR</li>
+      </ul>
+      <p>Improving your credit score before applying for an auto loan can save you thousands. Even moving from Near Prime to Prime can cut your monthly payment by $50–$100 on a typical loan.</p>
         </div>
       </article>
     </div>
@@ -743,7 +771,12 @@ const CONFIG = {
         <h2 class="art-title">Credit Card Payoff 2026: Avalanche vs. Snowball &amp; Why Minimum Payments Are a Trap</h2>
         <div class="art-body">
           <p>Americans carry over <strong>$1.21 trillion</strong> in credit card debt as of Q1 2026. At average APRs near 27%, a $9,200 balance paid at minimum takes over 7 years and costs $7,500+ in interest.</p>
-          <div class="art-placeholder" role="note">📝 <strong>Article Placeholder</strong> — Cover Avalanche vs Snowball, 0% APR balance transfers, and debt consolidation options.</div>
+          <h3>Avalanche vs. Snowball: Which Payoff Method Is Best?</h3>
+      <p>The <strong>avalanche method</strong> directs extra payments to the highest-APR card first — mathematically optimal, saving the most in total interest. The <strong>snowball method</strong> pays off the smallest balance first — psychologically motivating, providing quick wins that keep you going. Research shows both methods work; the best one is whichever you'll actually stick with. Our calculator uses the accelerated payment method — enter your extra payment amount to see your personalized savings.</p>
+      <h3>0% APR Balance Transfer Strategy for 2026</h3>
+      <p>Many issuers offer 0% APR balance transfer promotions for 12–21 months. With a typical 3–5% transfer fee, this strategy makes sense if you can pay off most of the balance during the promotional period. On a $9,200 balance, a 3% transfer fee ($276) is a bargain compared to paying 24.99% APR for another year ($2,300+ in interest). Always have a payoff plan before transferring.</p>
+      <h3>Debt Consolidation Loans</h3>
+      <p>Personal loans for debt consolidation currently offer rates of 8–15% for borrowers with good credit — significantly lower than the average credit card APR of 27%. Consolidating $15,000 of credit card debt at 27% into a personal loan at 12% over 3 years saves approximately <strong>$4,500 in interest</strong> and gives you a fixed payoff date.</p>
         </div>
       </article>
     </div>
@@ -823,10 +856,134 @@ const CONFIG = {
           <p>A 25-year-old investing $500/month at 8% has <strong>$1.75M by 65</strong>. A 35-year-old starting the same plan has only $750K — less than half — despite just 10 fewer years. Those early years are irreplaceable.</p>
           <h3>Tax-Advantaged Accounts Supercharge Compounding</h3>
           <p>Roth IRA withdrawals are tax-free in retirement. The 2026 Roth IRA limit is <strong>$7,000</strong> ($8,000 if 50+). HSAs are triple-tax-advantaged: $4,300 individual / $8,550 family in 2026.</p>
-          <div class="art-placeholder" role="note">📝 <strong>Article Placeholder</strong> — Add S&P 500 historical returns, DRIP compounding, and expense ratio impact on long-term wealth.</div>
+          <h3>S&P 500 Historical Returns: The Case for Long-Term Investing</h3>
+      <p>The S&P 500 has returned an average of approximately <strong>10.1% annually</strong> over the past 50 years (about 7–8% after inflation). While past performance doesn't guarantee future results, this historical data underscores the power of long-term, diversified investing. Our compound interest calculator defaults to 8% — a conservative estimate that accounts for market volatility and expense ratios.</p>
+      <h3>DRIP: Dividend Reinvestment Plans</h3>
+      <p>Dividend Reinvestment Plans (DRIPs) automatically reinvest your dividend payments to purchase additional shares, supercharging the compounding effect. Stocks in the S&P 500 pay an average dividend yield of about 1.5%. Over 30 years, reinvesting those dividends can add 20–30% to your total return compared to taking dividends as cash.</p>
+      <h3>The Devastating Impact of High Expense Ratios</h3>
+      <p>A 1% annual expense ratio (charged by many actively managed mutual funds) may seem small, but it has an enormous impact over time. On a $100,000 portfolio earning 8% annually over 30 years: a 0.05% expense ratio (typical for index funds) leaves you with <strong>$976,000</strong>. A 1% expense ratio leaves you with only <strong>$743,000</strong> — a difference of over <strong>$233,000</strong>. Always choose low-cost index funds when possible.</p>
+      <ul>
+        <li><strong>Start investing as early as possible</strong> — time is your greatest asset</li>
+        <li><strong>Reinvest all dividends</strong> to maximize compounding</li>
+        <li><strong>Use tax-advantaged accounts</strong> (401k, IRA, HSA) before taxable accounts</li>
+        <li><strong>Choose low-cost index funds</strong> — minimize fees that erode compound growth</li>
+        <li><strong>Stay invested through market downturns</strong> — time in the market beats timing the market</li>
+      </ul>
         </div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT US ══ -->
+<section id="t-about" class="tool" role="tabpanel">
+  <div class="tool-header">
+    <nav class="bc" aria-label="Breadcrumb"><ol><li><a href="/">USFinWise</a></li><li aria-hidden="true"> / </li><li aria-current="page">About Us</li></ol></nav>
+    <h2>About USFinWise</h2>
+    <p>Free, accurate, and private financial calculators built for Americans.</p>
+  </div>
+
+  <div style="max-width:800px">
+
+    <!-- Mission -->
+    <div class="card" style="margin-bottom:24px">
+      <h3 class="card-hd">🎯 Our Mission</h3>
+      <p style="color:var(--txt1);font-size:.95rem;line-height:1.8;margin-top:12px">
+        USFinWise was built with one goal: give every American access to the same high-quality financial tools that used to be reserved for people who could afford a financial advisor. Whether you're a first-time homebuyer trying to understand your mortgage payment, a young professional planning for retirement, or someone trying to get out of credit card debt — we built this for you.
+      </p>
+      <p style="color:var(--txt1);font-size:.95rem;line-height:1.8;margin-top:12px">
+        All five calculators on USFinWise are completely free, require no account or sign-up, and process all your data locally in your browser. We never see your numbers. We never store them. Your financial information stays yours.
+      </p>
+    </div>
+
+    <!-- What We Offer -->
+    <div class="card" style="margin-bottom:24px">
+      <h3 class="card-hd">🧮 What We Offer</h3>
+      <div style="margin-top:16px;display:grid;gap:16px">
+        <div style="background:var(--bg3);border-radius:var(--r-sm);padding:16px;border:1px solid var(--bdr)">
+          <strong style="color:var(--acc)">🏠 Mortgage Calculator</strong>
+          <p style="color:var(--txt1);font-size:.88rem;margin-top:6px;line-height:1.6">Calculate your full monthly PITI payment including principal, interest, property taxes, homeowner's insurance, HOA fees, and PMI. See a complete amortization schedule and understand exactly how much of your payment goes to interest vs. principal each month.</p>
+        </div>
+        <div style="background:var(--bg3);border-radius:var(--r-sm);padding:16px;border:1px solid var(--bdr)">
+          <strong style="color:var(--acc)">📈 401k / Retirement Calculator</strong>
+          <p style="color:var(--txt1);font-size:.88rem;margin-top:6px;line-height:1.6">Project your retirement nest egg with employer match, compound growth, and 2026 IRS contribution limits built in. See how inflation affects your purchasing power and estimate your monthly withdrawal using the proven 4% rule.</p>
+        </div>
+        <div style="background:var(--bg3);border-radius:var(--r-sm);padding:16px;border:1px solid var(--bdr)">
+          <strong style="color:var(--acc)">🚗 Auto Loan Calculator</strong>
+          <p style="color:var(--txt1);font-size:.88rem;margin-top:6px;line-height:1.6">Find your true monthly car payment including trade-in value, sales tax, and dealer fees — costs that dealers often hide until you're sitting at the finance desk. Know your numbers before you walk in.</p>
+        </div>
+        <div style="background:var(--bg3);border-radius:var(--r-sm);padding:16px;border:1px solid var(--bdr)">
+          <strong style="color:var(--acc)">💳 Credit Card Payoff Calculator</strong>
+          <p style="color:var(--txt1);font-size:.88rem;margin-top:6px;line-height:1.6">See your exact debt-free date and how much interest you save by paying more than the minimum. With average US credit card APRs near 27% in 2026, this calculator could save you thousands of dollars.</p>
+        </div>
+        <div style="background:var(--bg3);border-radius:var(--r-sm);padding:16px;border:1px solid var(--bdr)">
+          <strong style="color:var(--acc)">✨ Compound Interest Calculator</strong>
+          <p style="color:var(--txt1);font-size:.88rem;margin-top:6px;line-height:1.6">Visualize the exponential power of compound interest over time. Support for daily, monthly, quarterly, and annual compounding. Includes the Rule of 72 to instantly calculate how long it takes your money to double.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Trust Us -->
+    <div class="card" style="margin-bottom:24px">
+      <h3 class="card-hd">✅ Why Trust USFinWise</h3>
+      <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:var(--grn-bg);border:1px solid rgba(16,185,129,.2);border-radius:var(--r-sm);padding:14px;text-align:center">
+          <div style="font-size:1.5rem;font-weight:700;color:var(--grn)">100%</div>
+          <div style="font-size:.78rem;color:var(--txt1);margin-top:4px">Free Forever</div>
+        </div>
+        <div style="background:var(--acc-bg);border:1px solid rgba(59,130,246,.2);border-radius:var(--r-sm);padding:14px;text-align:center">
+          <div style="font-size:1.5rem;font-weight:700;color:var(--acc)">0</div>
+          <div style="font-size:.78rem;color:var(--txt1);margin-top:4px">Data Collected</div>
+        </div>
+        <div style="background:var(--acc-bg);border:1px solid rgba(59,130,246,.2);border-radius:var(--r-sm);padding:14px;text-align:center">
+          <div style="font-size:1.5rem;font-weight:700;color:var(--acc)">5</div>
+          <div style="font-size:.78rem;color:var(--txt1);margin-top:4px">Calculators</div>
+        </div>
+        <div style="background:var(--grn-bg);border:1px solid rgba(16,185,129,.2);border-radius:var(--r-sm);padding:14px;text-align:center">
+          <div style="font-size:1.5rem;font-weight:700;color:var(--grn)">2026</div>
+          <div style="font-size:.78rem;color:var(--txt1);margin-top:4px">IRS Updated</div>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <ul style="color:var(--txt1);font-size:.9rem;line-height:2;list-style:none;padding:0">
+          <li>✅ All calculations run in your browser — your data never leaves your device</li>
+          <li>✅ Updated weekly with current national average interest rates</li>
+          <li>✅ 2026 IRS limits built into the 401k calculator</li>
+          <li>✅ GDPR and CCPA compliant — no cookies used for tracking</li>
+          <li>✅ No ads that collect your data — we respect your privacy</li>
+          <li>✅ Mobile-friendly and accessible on any device</li>
+          <li>✅ No sign-up, no account, no credit card required — ever</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="card" style="margin-bottom:24px">
+      <h3 class="card-hd">⚠️ Important Disclaimer</h3>
+      <div class="tip red" style="margin-top:12px">
+        USFinWise provides financial calculators for <strong>educational and informational purposes only</strong>. We are not a registered investment advisor, mortgage lender, or financial institution. The results produced by our calculators are estimates based on the information you provide and standard financial formulas. Always consult a licensed financial advisor, CPA, or mortgage professional before making any significant financial decision.
+      </div>
+      <p style="color:var(--txt1);font-size:.85rem;line-height:1.8;margin-top:12px">
+        Interest rates displayed as defaults represent national averages sourced from publicly available data including the Freddie Mac Primary Mortgage Market Survey, Federal Reserve H.15 release, and other public sources. Rates change daily and your actual rate will vary based on your credit profile, lender, and market conditions.
+      </p>
+    </div>
+
+    <!-- Contact -->
+    <div class="card">
+      <h3 class="card-hd">📬 Get in Touch</h3>
+      <p style="color:var(--txt1);font-size:.9rem;line-height:1.8;margin-top:12px">
+        Have a question about a calculator? Found an error? Want to suggest a new feature? We'd love to hear from you. Our small team reads every message and responds within 1–2 business days.
+      </p>
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="mailto:hello@usfinwise.com" class="btn btn-primary" style="width:auto">
+          ✉️ hello@usfinwise.com
+        </a>
+        <button class="btn btn-ghost" onclick="openLegal('contact')">
+          📝 Send a Message
+        </button>
+      </div>
+    </div>
+
   </div>
 </section>
 
