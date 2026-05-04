@@ -1,0 +1,31 @@
+{
+  "rates": {
+    "mortgage_rate": 6.82,
+    "auto_loan_rate": 7.10,
+    "credit_card_rate": 24.99,
+    "savings_rate": 5.10
+  },
+  "seo": {
+    "meta_description": "Free mortgage calculator May 2026. Instant PITI payment, PMI & amortization. Trusted by 500K+ Americans. No sign-up required.",
+    "meta_desc_mortgage": "Free mortgage calculator 2026. Instant PITI payment, PMI & amortization. Trusted by 500K+ Americans. No sign-up required.",
+    "meta_desc_retirement": "Free 401k calculator 2026. Project your retirement savings with employer match, IRS limits & compound growth.",
+    "meta_desc_auto": "Free auto loan calculator 2026. Includes trade-in value, sales tax & dealer fees. National avg APR: 7.10%. No sign-up.",
+    "meta_desc_cc": "Free credit card payoff calculator 2026. See how much interest you save by paying more than minimum. Avg APR: 24.99%.",
+    "meta_desc_ci": "Free compound interest calculator 2026. Visualize wealth growth with daily/monthly/annual compounding. Rule of 72 included."
+  },
+  "display": {
+    "last_updated_text": "Updated for May 2026",
+    "hero_subheading": "Five precision tools for mortgages, retirement, auto loans & more — free, instant, 100% private.",
+    "kpi_users": "500K+",
+    "kpi_rate_display": "6.82%"
+  },
+  "limits": {
+    "k401_limit": 23000,
+    "k401_catchup": 30500,
+    "ira_limit": 7000,
+    "hsa_single": 4300,
+    "hsa_family": 8550,
+    "conforming_limit": 766550,
+    "fha_limit": 498257
+  }
+}

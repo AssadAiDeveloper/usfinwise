@@ -1,0 +1,136 @@
+/**
+ * USFinWise — cms-bridge.js
+ * المسؤولية: جلب البيانات من CMS وتطبيقها على الصفحة
+ * لا يحتوي على MONTHS أو helpers — كلها في calculator.js
+ */
+'use strict';
+
+/* ═══════════════════════════════════════
+   CMS DATA STORE
+═══════════════════════════════════════ */
+window.CMS_DATA = {
+  rates: {
+    mortgage_rate:    CONFIG.defaultRates.mortgage,
+    auto_loan_rate:   CONFIG.defaultRates.auto,
+    credit_card_rate: CONFIG.defaultRates.creditCard,
+    savings_rate:     CONFIG.defaultRates.savings,
+  },
+  seo: {
+    meta_desc_mortgage:   '',
+    meta_desc_retirement: '',
+    meta_desc_auto:       '',
+    meta_desc_cc:         '',
+    meta_desc_ci:         '',
+  },
+  display: {
+    last_updated_text: '',
+    kpi_users:         '500K+',
+    kpi_rate_display:  CONFIG.defaultRates.mortgage + '%',
+  },
+  limits: {
+    k401_limit:       CONFIG.limits.k401limit,
+    k401_catchup:     CONFIG.limits.k401catchup,
+    ira_limit:        CONFIG.limits.iraLimit,
+    hsa_single:       CONFIG.limits.hsaSingle,
+    hsa_family:       CONFIG.limits.hsaFamily,
+    conforming_limit: CONFIG.limits.conforming,
+    fha_limit:        CONFIG.limits.fhaStd,
+  },
+};
+
+/* ═══════════════════════════════════════
+   FETCH site_data.json
+═══════════════════════════════════════ */
+async function fetchSiteData() {
+  try {
+    const res = await fetch('/data/site_data.json', {
+      method: 'GET', cache: 'no-cache',
+      headers: { 'Accept': 'application/json' },
+    });
+    if (!res.ok) { console.warn('[USFinWise] Using CONFIG defaults.'); return; }
+    const data = await res.json();
+    if (data.rates)   Object.assign(window.CMS_DATA.rates,   data.rates);
+    if (data.seo)     Object.assign(window.CMS_DATA.seo,     data.seo);
+    if (data.display) Object.assign(window.CMS_DATA.display, data.display);
+    if (data.limits)  Object.assign(window.CMS_DATA.limits,  data.limits);
+    console.info('[USFinWise CMS] Live data loaded.');
+  } catch(err) {
+    console.warn('[USFinWise] Fetch failed, using defaults:', err.message);
+  }
+}
+
+/* ═══════════════════════════════════════
+   APPLY DATA TO DOM
+═══════════════════════════════════════ */
+function applyLiveData() {
+  const r = window.CMS_DATA.rates;
+  const d = window.CMS_DATA.display;
+  const l = window.CMS_DATA.limits;
+  const _MO = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const now = new Date();
+  const mo  = _MO[now.getMonth()];
+  const yr  = now.getFullYear();
+
+  // Freshness badge
+  const badge = document.getElementById('freshnessText');
+  if (badge) badge.textContent = d.last_updated_text || ('Updated for ' + mo + ' ' + yr);
+
+  // Hero KPIs
+  const heroRate  = document.getElementById('heroRate');
+  const heroUsers = document.getElementById('heroUsers');
+  if (heroRate)  heroRate.textContent  = d.kpi_rate_display || (r.mortgage_rate + '%');
+  if (heroUsers) heroUsers.textContent = d.kpi_users || '500K+';
+
+  // Live rates into calculator inputs
+  function setIfDefault(id, newVal, oldDefault) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (isNaN(parseFloat(el.value)) || parseFloat(el.value) === oldDefault) el.value = newVal;
+  }
+  setIfDefault('m-rate', r.mortgage_rate,    CONFIG.defaultRates.mortgage);
+  setIfDefault('a-rate', r.auto_loan_rate,   CONFIG.defaultRates.auto);
+  setIfDefault('c-apr',  r.credit_card_rate, CONFIG.defaultRates.creditCard);
+
+  // IRS tip
+  const tip = document.getElementById('irs-401k-tip');
+  if (tip) tip.innerHTML = '💡 2026 IRS limit: <strong>$' + l.k401_limit.toLocaleString() + '</strong> ($' + l.k401_catchup.toLocaleString() + ' if age 50+).';
+
+  // Footer year
+  const fy = document.getElementById('footer-yr');
+  if (fy) fy.textContent = yr;
+
+  // Article dates
+  ['m-art-date','r-art-date','a-art-date'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = 'Updated ' + mo + ' ' + yr; }
+  });
+}
+
+/* ═══════════════════════════════════════
+   META TAGS
+═══════════════════════════════════════ */
+window.updateMetaTags = function(tool) {
+  var titles = {
+    mortgage: 'Mortgage Calculator 2026 | USFinWise',
+    ret:      '401k Retirement Calculator 2026 | USFinWise',
+    auto:     'Auto Loan Calculator 2026 | USFinWise',
+    cc:       'Credit Card Payoff Calculator 2026 | USFinWise',
+    ci:       'Compound Interest Calculator 2026 | USFinWise',
+  };
+  var title = titles[tool] || titles.mortgage;
+  var titleEl = document.getElementById('page-title');
+  if (titleEl) titleEl.textContent = title;
+  var ogEl = document.getElementById('og-title');
+  if (ogEl) ogEl.setAttribute('content', title);
+  var twEl = document.getElementById('tw-title');
+  if (twEl) twEl.setAttribute('content', title);
+};
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', async function() {
+  await fetchSiteData();
+  applyLiveData();
+  document.dispatchEvent(new CustomEvent('cmsReady'));
+});

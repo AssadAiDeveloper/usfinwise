@@ -1,0 +1,307 @@
+# ═══════════════════════════════════════════════════════════════════
+# DECAP CMS CONFIGURATION — USFinWise Financial Calculator Suite
+# Docs: https://decapcms.org/docs/configuration-options/
+# ═══════════════════════════════════════════════════════════════════
+
+
+# ───────────────────────────────────────
+# BACKEND
+# git-gateway connects Decap to your Git
+# repo through Netlify's identity service.
+# No API keys needed — Netlify handles auth.
+# ───────────────────────────────────────
+backend:
+  name: git-gateway
+  branch: main           # ← Change to 'master' if your default branch is master
+
+
+# ───────────────────────────────────────
+# MEDIA / UPLOADS
+# Where uploaded images are stored in
+# the repo. Adjust path if you prefer a
+# different folder.
+# ───────────────────────────────────────
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+
+# ───────────────────────────────────────
+# SITE URL
+# Required for the CMS preview pane to
+# render your live site correctly.
+# ───────────────────────────────────────
+site_url: https://usfinwise.com
+display_url: https://usfinwise.com
+logo_url: https://usfinwise.com/images/admin-logo.png
+
+
+# ───────────────────────────────────────
+# EDITOR
+# Open the preview pane by default.
+# ───────────────────────────────────────
+editor:
+  preview: true
+
+
+# ═══════════════════════════════════════════════════════════════════
+# COLLECTIONS
+# Each collection maps to a folder or file in your repository.
+# We use ONE "file" collection for all site-wide settings —
+# this writes a single JSON file that the front-end fetches.
+# ═══════════════════════════════════════════════════════════════════
+collections:
+
+  # ─────────────────────────────────────
+  # COLLECTION 1: SITE SETTINGS
+  # Type: file-based (single JSON output)
+  # Output: data/site_data.json
+  # Who edits: site admin / content editor
+  # ─────────────────────────────────────
+  - name: "settings"
+    label: "⚙️ Site Settings"
+    description: "Control live interest rates, SEO text, and site-wide content without touching code."
+    # "files" means this collection contains named single files,
+    # not a folder of many documents.
+    files:
+
+      # ── File 1: All editable site data ──────────────────────────
+      - name: "site_data"
+        label: "📊 Rates, SEO & Display Settings"
+        file: "data/site_data.json"
+        # JSON format — must match what script.js expects
+        format: json
+        fields:
+
+          # ══════════════════════════════════
+          # SECTION A: INTEREST RATES
+          # These feed directly into the
+          # calculator default input values.
+          # ══════════════════════════════════
+          - label: "💰 Live Interest Rates"
+            name: "rates"
+            widget: "object"
+            summary: "Mortgage: {{fields.mortgage_rate}}% | Auto: {{fields.auto_loan_rate}}% | CC: {{fields.credit_card_rate}}%"
+            fields:
+
+              - label: "Mortgage Rate (30-yr Fixed, %)"
+                name: "mortgage_rate"
+                widget: "number"
+                value_type: "float"
+                min: 0.1
+                max: 25.0
+                step: 0.01
+                default: 6.82
+                hint: "National average 30-year fixed rate. Source: Freddie Mac PMMS. Update weekly."
+
+              - label: "Auto Loan Rate (New Car APR, %)"
+                name: "auto_loan_rate"
+                widget: "number"
+                value_type: "float"
+                min: 0.1
+                max: 30.0
+                step: 0.01
+                default: 7.10
+                hint: "National average APR for new vehicle loans (60-month term, prime credit)."
+
+              - label: "Credit Card Rate (APR, %)"
+                name: "credit_card_rate"
+                widget: "number"
+                value_type: "float"
+                min: 1.0
+                max: 50.0
+                step: 0.01
+                default: 24.99
+                hint: "Average US credit card APR. Source: Federal Reserve G.19 release."
+
+              - label: "Savings / HYSA Rate (%)"
+                name: "savings_rate"
+                widget: "number"
+                value_type: "float"
+                min: 0.01
+                max: 20.0
+                step: 0.01
+                default: 5.10
+                hint: "High-yield savings account national average. Used for reference display."
+
+          # ══════════════════════════════════
+          # SECTION B: SEO & META CONTENT
+          # Updates meta description tags and
+          # per-tool descriptions dynamically.
+          # ══════════════════════════════════
+          - label: "🔍 SEO & Meta Tags"
+            name: "seo"
+            widget: "object"
+            fields:
+
+              - label: "Homepage Meta Description"
+                name: "meta_description"
+                widget: "text"
+                default: "Free mortgage calculator May 2026. Instant PITI payment, PMI & amortization. Trusted by 500K+ Americans. No sign-up required."
+                hint: "Keep under 160 characters for optimal SERP display. Currently: displayed on the mortgage tab."
+
+              - label: "Mortgage Tool Meta Description"
+                name: "meta_desc_mortgage"
+                widget: "text"
+                default: "Free mortgage calculator 2026. Instant PITI payment, PMI & amortization. Trusted by 500K+ Americans. No sign-up required."
+                hint: "Max 160 characters. Shown when the Mortgage tab is active."
+
+              - label: "401k Tool Meta Description"
+                name: "meta_desc_retirement"
+                widget: "text"
+                default: "Free 401k calculator 2026. Project your retirement savings with employer match, IRS limits & compound growth."
+                hint: "Max 160 characters. Shown when the 401k/Retirement tab is active."
+
+              - label: "Auto Loan Tool Meta Description"
+                name: "meta_desc_auto"
+                widget: "text"
+                default: "Free auto loan calculator 2026. Includes trade-in value, sales tax & dealer fees. National avg APR: 7.10%. No sign-up."
+                hint: "Max 160 characters. Shown when the Auto Loan tab is active."
+
+              - label: "Credit Card Tool Meta Description"
+                name: "meta_desc_cc"
+                widget: "text"
+                default: "Free credit card payoff calculator 2026. See how much interest you save by paying more than minimum. Avg APR: 24.99%."
+                hint: "Max 160 characters. Shown when the Credit Card tab is active."
+
+              - label: "Compound Interest Tool Meta Description"
+                name: "meta_desc_ci"
+                widget: "text"
+                default: "Free compound interest calculator 2026. Visualize wealth growth with daily/monthly/annual compounding. Rule of 72 included."
+                hint: "Max 160 characters. Shown when the Compound Interest tab is active."
+
+          # ══════════════════════════════════
+          # SECTION C: DISPLAY TEXT
+          # Hero badge, KPI labels, and the
+          # "Updated for {month}" freshness badge.
+          # ══════════════════════════════════
+          - label: "📝 Display & UI Text"
+            name: "display"
+            widget: "object"
+            fields:
+
+              - label: "Freshness Badge Text"
+                name: "last_updated_text"
+                widget: "string"
+                default: "Updated for May 2026"
+                hint: "Shown in the hero section badge. Example: 'Updated for June 2026'. Update monthly."
+
+              - label: "Hero Subheading"
+                name: "hero_subheading"
+                widget: "string"
+                default: "Five precision tools for mortgages, retirement, auto loans & more — free, instant, 100% private."
+                hint: "The subtitle line below the H1 in the hero section."
+
+              - label: "Monthly Users (KPI stat)"
+                name: "kpi_users"
+                widget: "string"
+                default: "500K+"
+                hint: "Displayed as the first KPI stat in the hero. Example: '500K+' or '1M+'"
+
+              - label: "Current 30-Year Rate Display (KPI)"
+                name: "kpi_rate_display"
+                widget: "string"
+                default: "6.82%"
+                hint: "Displayed in the hero KPI strip. Should match the mortgage_rate field above."
+
+          # ══════════════════════════════════
+          # SECTION D: IRS REGULATORY LIMITS
+          # Update annually after IRS publishes
+          # new contribution limits (usually Nov).
+          # ══════════════════════════════════
+          - label: "🏛️ IRS & Regulatory Limits (2026)"
+            name: "limits"
+            widget: "object"
+            fields:
+
+              - label: "401k Employee Limit ($)"
+                name: "k401_limit"
+                widget: "number"
+                value_type: "int"
+                default: 23000
+                hint: "IRS 401(k) employee contribution limit. Update annually each November."
+
+              - label: "401k Catch-Up Limit (age 50+, $)"
+                name: "k401_catchup"
+                widget: "number"
+                value_type: "int"
+                default: 30500
+                hint: "Total 401(k) limit for workers aged 50 and older."
+
+              - label: "IRA Contribution Limit ($)"
+                name: "ira_limit"
+                widget: "number"
+                value_type: "int"
+                default: 7000
+                hint: "Annual Traditional & Roth IRA contribution limit."
+
+              - label: "HSA Limit — Individual ($)"
+                name: "hsa_single"
+                widget: "number"
+                value_type: "int"
+                default: 4300
+                hint: "Annual HSA contribution limit for self-only HDHP coverage."
+
+              - label: "HSA Limit — Family ($)"
+                name: "hsa_family"
+                widget: "number"
+                value_type: "int"
+                default: 8550
+                hint: "Annual HSA contribution limit for family HDHP coverage."
+
+              - label: "Conforming Loan Limit ($)"
+                name: "conforming_limit"
+                widget: "number"
+                value_type: "int"
+                default: 766550
+                hint: "FHFA baseline conforming loan limit for most US counties."
+
+              - label: "FHA Loan Limit — Standard ($)"
+                name: "fha_limit"
+                widget: "number"
+                value_type: "int"
+                default: 498257
+                hint: "FHA standard loan limit for single-family homes in most markets."
+
+
+  # ─────────────────────────────────────
+  # COLLECTION 2: SEO ARTICLES
+  # Folder-based — each calculator tool
+  # gets its own editable article.
+  # ─────────────────────────────────────
+  - name: "articles"
+    label: "📰 SEO Articles"
+    description: "Edit the expert guide articles displayed below each calculator. Updating these improves Google ranking and CTR."
+    folder: "data/articles"
+    create: false          # Don't allow creating new articles (only edit existing 5)
+    format: json
+    slug: "{{slug}}"
+    fields:
+
+      - label: "Tool"
+        name: "tool"
+        widget: "hidden"
+
+      - label: "Article Title (H2)"
+        name: "title"
+        widget: "string"
+        hint: "Include the year (e.g., 2026) for freshness signals. Keep under 70 characters."
+
+      - label: "Article Tag Label"
+        name: "tag"
+        widget: "string"
+        default: "Expert Guide"
+        hint: "The pill badge shown above the article title. E.g., 'Expert Guide', 'Retirement Planning'."
+
+      - label: "Article Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Full article content. Use ## for H3 subheadings. Target 600–900 words for SEO. Include current year rates and IRS limits."
+        minimal: false
+        buttons:
+          - bold
+          - italic
+          - link
+          - heading-two
+          - heading-three
+          - bulleted-list
+          - numbered-list
