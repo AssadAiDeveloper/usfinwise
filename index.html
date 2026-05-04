@@ -907,13 +907,189 @@ const CONFIG = {
       <h2 id="legal-modal-title">Legal</h2>
       <button class="lm-close" onclick="closeLegal()" aria-label="Close legal panel">✕</button>
     </div>
-    <!-- Panels: lp-privacy, lp-terms, lp-disclaimer, lp-contact, lp-sitemap -->
-    <!-- Copy full panel HTML from /usfinwise/index.html lines 1679–2064 -->
-    <div id="lp-privacy"    class="lm-panel"><div class="lm-body"><div class="lm-badge">🔒 Privacy Policy</div><p>Copy full Privacy Policy content from previous build.</p></div></div>
-    <div id="lp-terms"      class="lm-panel" style="display:none"><div class="lm-body"><div class="lm-badge">📋 Terms of Service</div><p>Copy full Terms of Service content from previous build.</p></div></div>
-    <div id="lp-disclaimer" class="lm-panel" style="display:none"><div class="lm-body"><div class="lm-badge">⚠️ Financial Disclaimer</div><p>Copy full Disclaimer content from previous build.</p></div></div>
-    <div id="lp-contact"    class="lm-panel" style="display:none"><div class="lm-body"><div class="lm-badge">✉️ Contact Us</div><p>Copy full Contact Form content from previous build.</p></div></div>
-    <div id="lp-sitemap"    class="lm-panel" style="display:none"><div class="lm-body"><div class="lm-badge">🗺️ Sitemap</div><p id="sitemap-date">May 2026</p></div></div>
+
+    <!-- ══ PRIVACY POLICY ══ -->
+    <div id="lp-privacy" class="lm-panel">
+      <div class="lm-body">
+        <div class="lm-badge">🔒 Privacy Policy</div>
+        <p><strong>Effective Date:</strong> January 1, 2026 &nbsp;|&nbsp; <strong>Last Updated:</strong> May 1, 2026</p>
+        <h3>1. Information We Collect</h3>
+        <p><strong>Calculator Inputs (Not Collected):</strong> All financial figures you enter are processed entirely within your browser. This data is never transmitted to our servers or stored in any database.</p>
+        <p><strong>Local Storage:</strong> We store your theme preference (<code>ufw-theme</code>) and cookie consent (<code>ufw-cookie</code>) locally on your device only. We do not set third-party tracking cookies.</p>
+        <p><strong>Server Logs:</strong> Standard access logs (IP address, browser type, pages visited) are retained for up to 30 days for security purposes only, then permanently deleted.</p>
+        <h3>2. How We Use Information</h3>
+        <ul>
+          <li>To operate and improve the USFinWise calculators</li>
+          <li>To respond to your support messages</li>
+          <li>To detect and prevent security incidents</li>
+          <li>To comply with applicable legal obligations</li>
+        </ul>
+        <p>We <strong>never sell, rent, or share</strong> your personal information with third parties for marketing.</p>
+        <h3>3. Third-Party Services</h3>
+        <p><strong>Google Fonts:</strong> We load fonts from Google's servers. Google may log your IP when serving these files.</p>
+        <p><strong>Google AdSense (if enabled):</strong> May use cookies to serve personalized ads. Opt out at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.</p>
+        <h3>4. Your Rights — GDPR</h3>
+        <p>If you are in the EEA, you have the right to: Access, Rectification, Erasure, Data Portability, and the right to Object. Email <strong>privacy@usfinwise.com</strong> — we respond within 30 days.</p>
+        <h3>5. Your Rights — CCPA</h3>
+        <p>California residents: we do not sell personal information. Submit requests to <strong>privacy@usfinwise.com</strong>.</p>
+        <h3>6. Children's Privacy</h3>
+        <p>USFinWise is not directed to individuals under 13. We do not knowingly collect data from children.</p>
+        <h3>7. Contact</h3>
+        <p>📧 <strong>privacy@usfinwise.com</strong></p>
+      </div>
+      <div class="lm-footer">Last reviewed May 1, 2026. Governing Law: California, United States.</div>
+    </div>
+
+    <!-- ══ TERMS OF SERVICE ══ -->
+    <div id="lp-terms" class="lm-panel" style="display:none">
+      <div class="lm-body">
+        <div class="lm-badge">📋 Terms of Service</div>
+        <p><strong>Effective Date:</strong> January 1, 2026 &nbsp;|&nbsp; <strong>Last Updated:</strong> May 1, 2026</p>
+        <h3>1. Acceptance of Terms</h3>
+        <p>By accessing or using USFinWise, you agree to be bound by these Terms. If you do not agree, please do not use the Service.</p>
+        <h3>2. Description of Service</h3>
+        <p>USFinWise provides free, web-based financial calculators for <strong>informational and educational purposes only</strong>. All calculations are performed client-side in your browser.</p>
+        <h3>3. No Financial Advice</h3>
+        <div class="lm-warn"><strong>Important:</strong> USFinWise is NOT a registered investment advisor, broker-dealer, mortgage lender, or attorney. Nothing on this website constitutes financial, investment, tax, or legal advice. Always consult a licensed professional before making financial decisions.</div>
+        <h3>4. Accuracy of Information</h3>
+        <p>While we strive to keep data current, we make <strong>no warranty</strong> as to the accuracy, completeness, or timeliness of any information. Always verify figures with official sources such as IRS.gov and FHFA.gov.</p>
+        <h3>5. Permitted Use</h3>
+        <p>You may use the Service for personal, non-commercial financial education. You agree NOT to scrape data, reproduce content without permission, or interfere with the Service.</p>
+        <h3>6. Intellectual Property</h3>
+        <p>All content on USFinWise is protected by copyright. The USFinWise name and logo are trademarks of USFinWise Financial Tools.</p>
+        <h3>7. Disclaimer of Warranties</h3>
+        <p>THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR-FREE.</p>
+        <h3>8. Limitation of Liability</h3>
+        <p>USFINWISE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES. OUR TOTAL LIABILITY SHALL NOT EXCEED $100 USD.</p>
+        <h3>9. Governing Law</h3>
+        <p>These Terms are governed by the laws of California, United States. Disputes shall be resolved by binding arbitration in Los Angeles County, California.</p>
+        <h3>10. Contact</h3>
+        <p>📧 <strong>legal@usfinwise.com</strong></p>
+      </div>
+      <div class="lm-footer">Last reviewed May 1, 2026. Governing Law: California, United States.</div>
+    </div>
+
+    <!-- ══ FINANCIAL DISCLAIMER ══ -->
+    <div id="lp-disclaimer" class="lm-panel" style="display:none">
+      <div class="lm-body">
+        <div class="lm-badge">⚠️ Financial Disclaimer</div>
+        <div class="lm-warn"><strong>NOT FINANCIAL ADVICE:</strong> All content and calculator results on USFinWise are for educational purposes only. We are not a licensed financial advisor, lender, broker, or attorney.</div>
+        <h3>Calculator Results Are Estimates Only</h3>
+        <p>Results are mathematical estimates based on your inputs and standard formulas. Actual payments, returns, and balances will differ based on lender terms, market conditions, taxes, and individual circumstances.</p>
+        <h3>Interest Rate Disclosures</h3>
+        <p>Default rates represent national averages as of May 2026. Your actual rate depends on your credit score, down payment, lender, and current market conditions. Always get quotes from multiple lenders.</p>
+        <h3>IRS &amp; Regulatory Figures</h3>
+        <p>IRS limits are updated annually. Always verify at <a href="https://www.irs.gov" target="_blank" rel="noopener">IRS.gov</a> and <a href="https://www.fhfa.gov" target="_blank" rel="noopener">FHFA.gov</a>.</p>
+        <h3>Investment &amp; Retirement Projections</h3>
+        <p>Projections assume a fixed rate of return. Real-world returns fluctuate and are not guaranteed. Past performance does not guarantee future results. You can lose money investing.</p>
+        <h3>Consult a Qualified Professional</h3>
+        <div class="lm-info">
+          <strong>Before any financial decision, consult:</strong><br/>
+          • A <strong>CFP®</strong> for investment and retirement planning<br/>
+          • A <strong>CPA</strong> for tax strategy<br/>
+          • An <strong>NMLS-registered mortgage professional</strong> for home loans<br/>
+          • A <strong>licensed attorney</strong> for legal matters
+        </div>
+        <h3>Limitation of Liability</h3>
+        <p>USFinWise expressly disclaims all liability for any financial loss or damages resulting from reliance on any content or results on this website.</p>
+      </div>
+      <div class="lm-footer">Last reviewed May 1, 2026. USFinWise is not a registered investment advisor or lender.</div>
+    </div>
+
+    <!-- ══ CONTACT US ══ -->
+    <div id="lp-contact" class="lm-panel" style="display:none">
+      <div class="lm-body">
+        <div class="lm-badge">✉️ Contact Us</div>
+        <p>We read every message and respond within 1–2 business days.</p>
+        <div class="lm-info">
+          📧 <strong>General:</strong> <a href="mailto:hello@usfinwise.com">hello@usfinwise.com</a><br/>
+          🔒 <strong>Privacy / GDPR:</strong> <a href="mailto:privacy@usfinwise.com">privacy@usfinwise.com</a><br/>
+          ⚖️ <strong>Legal:</strong> <a href="mailto:legal@usfinwise.com">legal@usfinwise.com</a><br/>
+          🐛 <strong>Bug Reports:</strong> <a href="mailto:bugs@usfinwise.com">bugs@usfinwise.com</a>
+        </div>
+        <h3>Send a Message</h3>
+        <form id="contactForm" onsubmit="submitContact(event)" novalidate>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cf-name">Full Name <span style="color:var(--red)">*</span></label>
+              <input type="text" id="cf-name" required placeholder="Jane Smith" autocomplete="name"/>
+            </div>
+            <div class="cf-field">
+              <label for="cf-email">Email Address <span style="color:var(--red)">*</span></label>
+              <input type="email" id="cf-email" required placeholder="jane@example.com" autocomplete="email"/>
+            </div>
+          </div>
+          <div class="cf-field">
+            <label for="cf-subject">Subject <span style="color:var(--red)">*</span></label>
+            <select id="cf-subject" required>
+              <option value="">— Select a topic —</option>
+              <option value="question">Calculator Question</option>
+              <option value="bug">Bug Report</option>
+              <option value="feature">Feature Request</option>
+              <option value="privacy">Privacy / GDPR Request</option>
+              <option value="advertising">Advertising / Partnership</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="cf-field">
+            <label for="cf-message">Message <span style="color:var(--red)">*</span></label>
+            <textarea id="cf-message" required rows="4" placeholder="Describe your question or feedback..."></textarea>
+          </div>
+          <div class="cf-field" style="display:flex;align-items:center;gap:10px">
+            <input type="checkbox" id="cf-consent" required style="width:16px;height:16px;accent-color:var(--acc)"/>
+            <label for="cf-consent" style="font-size:.78rem;color:var(--txt1);cursor:pointer">
+              I consent to USFinWise storing my contact info per our <a href="#" onclick="openLegal('privacy');return false">Privacy Policy</a>.
+            </label>
+          </div>
+          <div id="cf-error" style="display:none;color:var(--red);font-size:.78rem;margin:8px 0"></div>
+          <button type="submit" class="btn btn-primary" style="margin-top:12px">Send Message →</button>
+        </form>
+        <div class="cf-success" id="cf-success">
+          <p>✅ Message sent! We'll reply to <strong id="cf-success-email"></strong> within 1–2 business days.</p>
+        </div>
+      </div>
+      <div class="lm-footer">USFinWise · hello@usfinwise.com · Response: 1–2 business days</div>
+    </div>
+
+    <!-- ══ SITEMAP ══ -->
+    <div id="lp-sitemap" class="lm-panel" style="display:none">
+      <div class="lm-body">
+        <div class="lm-badge">🗺️ Sitemap</div>
+        <p>A complete index of all tools and pages on USFinWise.</p>
+        <div class="sm-section">
+          <h3>🧮 Financial Calculators</h3>
+          <div class="sm-grid">
+            <a class="sm-link" href="#" onclick="closeLegal();openTool('mortgage');return false"><span class="sm-ico">🏠</span> Mortgage Calculator</a>
+            <a class="sm-link" href="#" onclick="closeLegal();openTool('ret');return false"><span class="sm-ico">📈</span> 401k / Retirement</a>
+            <a class="sm-link" href="#" onclick="closeLegal();openTool('auto');return false"><span class="sm-ico">🚗</span> Auto Loan</a>
+            <a class="sm-link" href="#" onclick="closeLegal();openTool('cc');return false"><span class="sm-ico">💳</span> Credit Card Payoff</a>
+            <a class="sm-link" href="#" onclick="closeLegal();openTool('ci');return false"><span class="sm-ico">✨</span> Compound Interest</a>
+          </div>
+        </div>
+        <div class="sm-section">
+          <h3>⚖️ Legal &amp; Policies</h3>
+          <div class="sm-grid">
+            <a class="sm-link" href="#" onclick="openLegal('privacy');return false"><span class="sm-ico">🔒</span> Privacy Policy</a>
+            <a class="sm-link" href="#" onclick="openLegal('terms');return false"><span class="sm-ico">📋</span> Terms of Service</a>
+            <a class="sm-link" href="#" onclick="openLegal('disclaimer');return false"><span class="sm-ico">⚠️</span> Financial Disclaimer</a>
+            <a class="sm-link" href="#" onclick="openLegal('contact');return false"><span class="sm-ico">✉️</span> Contact Us</a>
+          </div>
+        </div>
+        <div class="sm-section">
+          <h3>🌐 External Resources</h3>
+          <div class="sm-grid">
+            <a class="sm-link" href="https://www.irs.gov" target="_blank" rel="noopener"><span class="sm-ico">🏛️</span> IRS.gov</a>
+            <a class="sm-link" href="https://www.federalreserve.gov" target="_blank" rel="noopener"><span class="sm-ico">🏦</span> Federal Reserve</a>
+            <a class="sm-link" href="https://www.cfpb.gov" target="_blank" rel="noopener"><span class="sm-ico">🛡️</span> CFPB</a>
+            <a class="sm-link" href="https://www.hud.gov" target="_blank" rel="noopener"><span class="sm-ico">🏠</span> HUD.gov</a>
+            <a class="sm-link" href="https://www.fhfa.gov" target="_blank" rel="noopener"><span class="sm-ico">📊</span> FHFA.gov</a>
+          </div>
+        </div>
+        <div class="lm-divider"></div>
+        <p style="font-size:.78rem;color:var(--txt2)">Last updated: <strong style="color:var(--txt1)" id="sitemap-date">May 2026</strong> · All 5 calculators operational</p>
+      </div>
+      <div class="lm-footer">USFinWise Sitemap · usfinwise.netlify.app · 5 Calculators · 4 Legal Pages</div>
+    </div>
   </div>
 </div>
 
