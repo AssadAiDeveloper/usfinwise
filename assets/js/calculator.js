@@ -108,22 +108,66 @@ window.updateSV = updateSV;
 function buildBars(rowId, xlId, data) {
   const row = $(rowId), xl = $(xlId);
   if (!row) return;
-  row.innerHTML = ''; if (xl) xl.innerHTML = '';
+  row.innerHTML = '';
+  if (xl) xl.innerHTML = '';
+  if (!data || data.length === 0) return;
+
   const maxV = Math.max(...data.map(d => (d.a || 0) + (d.b || 0)), 1);
+  const rowH = row.offsetHeight || 110;
+
   data.forEach(d => {
-    const col = document.createElement('div'); col.className = 'bar-col';
-    const tip = document.createElement('div'); tip.className = 'bar-tip';
-    tip.textContent = d.tip || ''; col.appendChild(tip);
+    const col = document.createElement('div');
+    col.className = 'bar-col';
+    col.style.cssText = 'flex:1;position:relative;height:100%;cursor:pointer;';
+
+    // Tooltip
+    const tip = document.createElement('div');
+    tip.className = 'bar-tip';
+    tip.textContent = d.tip || '';
+    col.appendChild(tip);
+
+    const total = (d.a || 0) + (d.b || 0);
+    const totalH = (total / maxV) * 100;
+
+    // Interest segment (top part — red)
     if (d.b !== undefined && d.b > 0) {
-      const sb = document.createElement('div'); sb.className = 'bar-seg';
-      sb.style.cssText = 'height:' + (d.b/maxV*100) + '%;background:' + (d.colorB||'var(--red)');
+      const bH = (d.b / maxV) * 100;
+      const sb = document.createElement('div');
+      sb.style.cssText = `
+        position:absolute;
+        bottom:${(d.a||0)/maxV*100}%;
+        left:0;right:0;
+        height:${bH}%;
+        min-height:2px;
+        background:${d.colorB || 'var(--red)'};
+        border-radius:3px 3px 0 0;
+      `;
       col.appendChild(sb);
     }
-    const sa = document.createElement('div'); sa.className = 'bar-seg';
-    sa.style.cssText = 'height:' + (d.a/maxV*100) + '%;background:' + (d.colorA||'var(--acc)');
+
+    // Principal segment (bottom part — blue)
+    const aH = (d.a / maxV) * 100;
+    const sa = document.createElement('div');
+    sa.style.cssText = `
+      position:absolute;
+      bottom:0;
+      left:0;right:0;
+      height:${aH}%;
+      min-height:2px;
+      background:${d.colorA || 'var(--acc)'};
+      border-radius:${d.b ? '0' : '3px 3px'} 0 0;
+    `;
     col.appendChild(sa);
+
     row.appendChild(col);
-    if (xl) { const li = document.createElement('div'); li.className = 'bar-xl-item'; li.textContent = d.label; xl.appendChild(li); }
+
+    // X-axis label
+    if (xl) {
+      const li = document.createElement('div');
+      li.className = 'bar-xl-item';
+      li.textContent = d.label;
+      xl.appendChild(li);
+    }
   });
 }
 

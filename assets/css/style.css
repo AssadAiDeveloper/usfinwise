@@ -617,11 +617,12 @@ input[type="range"]::-moz-range-thumb {
 @media (min-width: 600px) { .bar-row { gap: 4px; height: 110px; } }
 .bar-col {
   flex: 1; display: flex; flex-direction: column; justify-content: flex-end;
-  align-items: center; cursor: pointer; position: relative;
+  align-items: stretch; cursor: pointer; position: relative; height: 100%;
 }
 .bar-seg {
   width: 100%; min-height: 2px; border-radius: 3px 3px 0 0;
-  transition: height .5s var(--ease), opacity .2s;
+  transition: height .5s ease, opacity .2s;
+  display: block;
 }
 .bar-col:hover .bar-seg { opacity: .82; }
 
