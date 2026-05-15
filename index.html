@@ -77,22 +77,12 @@
 <!-- ═══════════════════════════════════════════════════════
      FONTS — Non-blocking preload (prevents render-blocking)
 ═══════════════════════════════════════════════════════ -->
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload"
-  href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Epilogue:wght@300;400;500;600&display=swap"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Epilogue:wght@300;400;500;600&display=swap"/>
-</noscript>
 
 <!-- ═══════════════════════════════════════════════════════
      NETLIFY IDENTITY WIDGET
      MUST be in <head> to intercept invite/confirm hash tokens
      before the page finishes loading. Body placement = broken.
 ═══════════════════════════════════════════════════════ -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 <!-- ═══════════════════════════════════════════════════════
      MAIN STYLESHEET
@@ -518,7 +508,6 @@ const CONFIG = {
   </article>
 </section>
 
-
 <!-- ────────────────────────────────────────────────────
      TOOL 2: 401k / RETIREMENT CALCULATOR
 ──────────────────────────────────────────────────── -->
@@ -624,7 +613,6 @@ const CONFIG = {
   </div>
 </section>
 
-
 <!-- ────────────────────────────────────────────────────
      TOOL 3: AUTO LOAN CALCULATOR
 ──────────────────────────────────────────────────── -->
@@ -709,7 +697,6 @@ const CONFIG = {
   </div>
 </section>
 
-
 <!-- ────────────────────────────────────────────────────
      TOOL 4: CREDIT CARD PAYOFF CALCULATOR
 ──────────────────────────────────────────────────── -->
@@ -782,7 +769,6 @@ const CONFIG = {
     </div>
   </div>
 </section>
-
 
 <!-- ────────────────────────────────────────────────────
      TOOL 5: COMPOUND INTEREST CALCULATOR
@@ -1264,17 +1250,6 @@ const CONFIG = {
      After a user clicks an invite/confirm email link,
      they land here. This sends them to /admin/ once logged in.
 ═══════════════════════════════════════════════════════ -->
-<script>
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on('init', function(user) {
-    if (!user) {
-      window.netlifyIdentity.on('login', function() {
-        document.location.href = 'admin/';
-      });
-    }
-  });
-}
-</script>
 
 <!-- ═══════════════════════════════════════════════════════
      SCRIPTS — Load order matters:

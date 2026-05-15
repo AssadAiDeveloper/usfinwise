@@ -8,8 +8,8 @@
    ──────────────────────────────────────────────────────────── */
 :root {
   /* Typography */
-  --font-display: 'Syne', 'Georgia', sans-serif;
-  --font-body:    'Epilogue', system-ui, sans-serif;
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body:    system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
 
   /* Motion */
   --ease: cubic-bezier(.4, 0, .2, 1);
@@ -24,9 +24,6 @@
 }
 
 /* font-display:swap prevents FOIT (invisible text flash) */
-@font-face { font-family: 'Syne';    font-display: swap; }
-@font-face { font-family: 'Epilogue'; font-display: swap; }
-
 /* ── DARK THEME (default) ────────────────────────────────── */
 [data-theme="dark"] {
   --bg0:        #08090d;
