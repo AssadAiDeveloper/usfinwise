@@ -4,24 +4,24 @@
  * يعتمد على: CONFIG (index.html) + CMS_DATA (cms-bridge.js)
  * يبدأ عند استقبال حدث 'cmsReady' من cms-bridge.js
  */
-'use strict';
+/* USFinWise — calculator.js */
+if (typeof window._ufw_loaded === 'undefined') {
+window._ufw_loaded = true;
 
-/* ═══════════════════════════════════════
-   HELPERS — معرّفة هنا فقط
-═══════════════════════════════════════ */
-const $      = id => document.getElementById(id);
-const setTxt = (id, v) => { const e = $(id); if (e) e.textContent = v; };
-const getN   = id => {
-  const el = $(id);
+/* Shared helpers */
+var $      = function(id) { return document.getElementById(id); };
+var setTxt = function(id, v) { var e = $(id); if (e) e.textContent = v; };
+var getN   = function(id) {
+  var el = $(id);
   if (!el || el.value === '' || el.value === null) return null;
-  const v = parseFloat(el.value);
+  var v = parseFloat(el.value);
   return isNaN(v) ? null : v;
 };
-const getNZ  = id => getN(id) || 0; // returns 0 if empty (for optional fields)
-const fmt    = n  => n.toLocaleString('en-US', {style:'currency',currency:'USD',maximumFractionDigits:0});
-const fmtD   = n  => n.toLocaleString('en-US', {style:'currency',currency:'USD',maximumFractionDigits:2});
-const pct    = n  => (Math.round(n * 10) / 10) + '%';
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var getNZ  = function(id) { return getN(id) || 0; };
+var fmt    = function(n) { return n.toLocaleString('en-US', {style:'currency',currency:'USD',maximumFractionDigits:0}); };
+var fmtD   = function(n) { return n.toLocaleString('en-US', {style:'currency',currency:'USD',maximumFractionDigits:2}); };
+var pct    = function(n) { return (Math.round(n * 10) / 10) + '%'; };
+var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 /* ═══════════════════════════════════════
    THEME
@@ -591,3 +591,5 @@ document.addEventListener('cmsReady', function() {
   showDashes();
   console.info('[USFinWise] ✅ Ready — waiting for user to press Calculate.');
 });
+
+} // end _ufw_loaded guard

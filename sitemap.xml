@@ -1,63 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://usfinwise.com/</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Mortgage Calculator -->
   <url>
-    <loc>https://usfinwise.com/#mortgage</loc>
-    <lastmod>2026-05-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- 401k Retirement Calculator -->
-  <url>
-    <loc>https://usfinwise.com/#retirement</loc>
-    <lastmod>2026-05-04</lastmod>
+    <loc>https://usfinwise.com/401k-calculator.html</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Auto Loan Calculator -->
   <url>
-    <loc>https://usfinwise.com/#auto</loc>
-    <lastmod>2026-05-04</lastmod>
+    <loc>https://usfinwise.com/auto-loan-calculator.html</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Credit Card Payoff Calculator -->
   <url>
-    <loc>https://usfinwise.com/#credit-card</loc>
-    <lastmod>2026-05-04</lastmod>
+    <loc>https://usfinwise.com/credit-card-payoff-calculator.html</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Compound Interest Calculator -->
   <url>
-    <loc>https://usfinwise.com/#compound</loc>
-    <lastmod>2026-05-04</lastmod>
+    <loc>https://usfinwise.com/compound-interest-calculator.html</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- About Us -->
   <url>
-    <loc>https://usfinwise.com/#about</loc>
-    <lastmod>2026-05-04</lastmod>
+    <loc>https://usfinwise.com/about.html</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
 </urlset>

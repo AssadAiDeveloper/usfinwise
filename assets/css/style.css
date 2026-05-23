@@ -368,7 +368,7 @@ main { padding: 28px 0 60px; }
 @media (min-width: 600px) { main { padding: 36px 0 80px; } }
 
 /* Tool panel visibility — SPA tab system */
-.tool { display: none; animation: fadeUp .32s var(--ease); }
+.tool { display: block; animation: fadeUp .32s var(--ease); }
 .tool.active { display: block; }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
