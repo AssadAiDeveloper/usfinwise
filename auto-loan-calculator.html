@@ -542,8 +542,30 @@ const CONFIG = {
        2. calculator.js  → listens for 'cmsReady', runs calcs
      Both are deferred by being at end of <body>.
 ═══════════════════════════════════════════════════════ -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KMDEPXL59"></script>
+<!-- GA loads after user interaction to save 64KB -->
+<script>
+(function() {
+  var loaded = false;
+  function loadGA() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-8KMDEPXL59';
+    document.head.appendChild(s);
+    s.onload = function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8KMDEPXL59');
+    };
+  }
+  ['scroll','click','keydown','touchstart','mousemove'].forEach(function(e) {
+    window.addEventListener(e, loadGA, {once: true, passive: true});
+  });
+  setTimeout(loadGA, 5000);
+})();
+</script>
 
 <script src="/assets/js/cms-bridge.js" defer></script>
 <script src="/assets/js/calculator.js" defer></script>
