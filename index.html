@@ -300,7 +300,7 @@ const CONFIG = {
     <!-- RESULTS PANEL -->
     <div>
       <div class="results" id="m-results" aria-live="polite" aria-atomic="false" aria-label="Mortgage calculation results">
-        <h3 class="results-label"><span aria-hidden="true">📊</span> Monthly Payment Breakdown</h3>
+        <p class="results-label"><span aria-hidden="true">📊</span> Monthly Payment Breakdown</p>
 
         <div class="res-primary">
           <div class="res-label">Estimated Monthly Payment</div>
@@ -696,33 +696,35 @@ const CONFIG = {
        2. calculator.js  → listens for 'cmsReady', runs calcs
      Both are deferred by being at end of <body>.
 ═══════════════════════════════════════════════════════ -->
-<!-- GA loads after user interaction to save 64KB -->
+<script src="/assets/js/cms-bridge.js" defer></script>
+<script src="/assets/js/calculator.js" defer></script>
+
+<!-- GA: loads after user interaction → saves 64KB TBT -->
 <script>
-(function() {
-  var loaded = false;
-  function loadGA() {
-    if (loaded) return;
-    loaded = true;
+(function(){
+  var done = false;
+  function loadGA(){
+    if(done) return; done = true;
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-8KMDEPXL59';
     document.head.appendChild(s);
-    s.onload = function() {
+    s.onload = function(){
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
       gtag('js', new Date());
-      gtag('config', 'G-8KMDEPXL59');
+      gtag('config', 'G-8KMDEPXL59', {send_page_view: true});
     };
   }
-  ['scroll','click','keydown','touchstart','mousemove'].forEach(function(e) {
-    window.addEventListener(e, loadGA, {once: true, passive: true});
+  /* Fire on first real user interaction */
+  var events = ['scroll','click','keydown','touchstart','mousemove'];
+  events.forEach(function(e){
+    window.addEventListener(e, loadGA, {once:true, passive:true});
   });
-  setTimeout(loadGA, 5000);
+  /* Fallback: fire after 4s regardless */
+  setTimeout(loadGA, 4000);
 })();
 </script>
-
-<script src="/assets/js/cms-bridge.js" defer></script>
-<script src="/assets/js/calculator.js" defer></script>
-
 </body>
 </html>
