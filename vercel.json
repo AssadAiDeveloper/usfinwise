@@ -2,8 +2,14 @@
   "cleanUrls": true,
   "redirects": [
     {
-      "source": "/favicon.ico",
-      "destination": "/assets/favicon.ico",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "usfinwise.com"
+        }
+      ],
+      "destination": "https://www.usfinwise.com/:path*",
       "permanent": true
     },
     {
